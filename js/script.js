@@ -1,4 +1,3 @@
-// Encode an SVG element as a base64 data uri.
 function svgToBase64Image(svgElement) {
   var div = document.createElement("div");
   div.appendChild(svgElement.cloneNode(true));
@@ -10,10 +9,16 @@ var urls = [];
 for (var i = 0; i < svgs.length; i++)
   urls.push('url("' + svgToBase64Image(svgs[i]) + '")');
 var url = urls.join(",");
-var msg =
-  "Base64 CSS image (for cross-browser support):" +
-  "<br><br>background: " +
-  url +
-  ";";
-document.getElementById("code").innerHTML = msg;
 document.body.style.background = url;
+
+$(document).ready(function() {
+  // Transition effect for navbar
+  $(window).scroll(function() {
+    // checks if window is scrolled more than 500px, adds/removes solid class
+    if ($(this).scrollTop() > 500) {
+      $(".navbar").addClass("solid");
+    } else {
+      $(".navbar").removeClass("solid");
+    }
+  });
+});
